@@ -1,0 +1,80 @@
+{{!-- // 1 # Citation for the following page:
+// 2 # Date: 11/20/2023
+// 3 # Adapted from code
+// 4 # Much of the format is from the node starter guide. Variables and table values original
+// 5 # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app --}}
+
+<h2>Ingredients</h2>
+{{!-- Create a table --}}
+<table id="ingredients-table">
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            <th>Ingredient ID</th>
+            <th>Ingredient Name</th>
+            <th>Ingredient Description</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the header in order --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.ingredient_id}}</td>
+            <td>{{this.ingredient_name}}</td>
+            <td>{{this.ingredient_description}}</td>
+            <td><button onclick="deleteIngredient({{this.ingredient_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+
+<script src="./js/delete_ingredient.js"></script>
+
+<h2>Add an Ingredient</h2>
+<p>To add a new ingredient, please enter the information below and click 'Submit'!</p>
+<form id="add-ingredient-form" method="POST" action="/add-ingredient-form">
+
+    <label for="input-ingredient-name">Ingredient Name: </label>
+    <input type="text" name="input-ingredient-name" id="input-ingredient-name">
+
+    <label for="input-ingredient-description">Ingredient Description: </label>
+    <input type="text" name="input-ingredient-description" id="input-ingredient-description">
+
+    <div>
+    <input type="submit">
+    </div>
+</form>
+
+
+<h2>Update an Ingredient</h2>
+<p>To update a specific ingredent, select the name from the drop-down menu and update the information.</p>
+<form id="update-ingredient-form-ajax">
+
+    <label for="mySelect">Ingredient: </label>
+    <select name="input-ingredient-update" id="mySelect">
+        <option value="test">Select an Ingredient</option>
+        {{#each data}}
+        <option value="{{this.ingredient_id}}">{{this.ingredient_name}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-ingredient-name-update">Ingredient Name: </label>
+    <input type="text" name="input-ingredient-name-update" id="input-ingredient-name-update">
+    
+    <label for="input-ingredient-description-update">Ingredient Description: </label>
+    <input type="text" name="input-ingredient-description-update" id="input-ingredient-description-update">
+
+    <div>
+    <input type="submit">
+    </div>
+
+</form>
+
+<script src="./js/update_ingredient.js"></script>

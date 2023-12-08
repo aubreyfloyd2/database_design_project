@@ -1,0 +1,279 @@
+/* 
+// 1 # Citation for the following page:
+// 2 # Date: 11/20/2023
+// 3 # Adapted from CS 290 Web Development css code
+// 4 # The format and layout is from the starter guide. All design choices and elements are unique to this project.
+*/
+
+/*   ----- Imports  -----  */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap');
+
+
+/*   ----- Variables  -----  */
+:root {
+  --lightBlue:#CFDEF2;
+  --vistaBlue:#88AADD;
+  --midBlue:#24487F;
+  --richBlack:#040910;
+  --whitesmoke:#F5F5F5;
+}
+
+/*  ----- Viewport ----- elements inherited by all remaining elements ----- */
+body {
+    background-color: var(--lightBlue);
+    color: var(--richBlack);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1em;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+/*  ----- Page layout blocks -----  */
+header {
+    background-color: var(--midBlue);
+    margin: 0;
+    padding: 1.5%;
+    text-align: center;
+    color: white;
+  }
+  
+  header img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  main {
+    margin: 0;
+    padding: 2.5%;
+  }
+  
+  section {
+    margin: 0;
+    padding: 2.5%;
+  }
+  
+  article {
+  }
+    #topic1 {}
+    #topic2 {}
+
+div {}
+aside {}
+footer {}
+
+/* ----- Anchors ----- Text links */
+a {}
+a:link {}
+a:hover {}
+a:active {}
+a:visited {}
+
+  /*  ----- Navigation ----- Override text links for navigation only.  */
+nav {
+    text-align: center;
+  }
+  
+  nav a {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 15px;
+    border: 1px solid var(--richBlack);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--richBlack);
+    background-color: var(--whitesmoke);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  nav a:hover {
+    background-color: var(--midBlue);
+    color: var(--whitesmoke);
+    cursor: pointer;
+  }
+  
+/*  -----  Typography  ----- */
+p {
+  text-align:center;
+}
+br {}
+ol, ul, dl {}
+li {}
+dt {}
+dd {}
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+} 
+h1 {}
+h2 {}
+h3 {}
+h4 {}
+h5 {}
+h6 {}
+
+abbr {}
+acronym {}
+address {}
+blockquote {}
+q {}
+cite {}
+em {}
+hr {}
+mark {}
+s {}
+span {}
+strong {}
+sub {}
+sup {}
+time {}
+
+/*  ----- Coding or instructional typography ----- */
+pre {}
+code {}
+kbd {}
+samp {}
+var {}
+del {} 
+ins {}
+
+/*  ----- Table -----  */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0px;
+    margin-top: 20px;
+    border: 2px solid var(--midBlue);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: var(--lightBlue);
+    color: black;
+    font-size: 110%;
+  }
+  
+  tr:nth-child(odd) {
+    background-color: var(--whitesmoke);
+  }
+
+/*  ----- Form -----  */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 2px solid var(--midBlue);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  fieldset {
+  }
+  
+  legend {
+  }
+  
+  label {
+    font-size: 0.9em;
+    color: black;
+    margin-bottom: 5px;
+  }
+  
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--midBlue);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: var(--midBlue);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 100%;
+  }
+  
+  button:hover {
+    background-color: var(--vistaBlue);
+  }
+  
+  :focus {
+    background-color: var(--vistaBlue);
+  }
+  
+  *::placeholder {
+    color: black;
+    font-size: 90%;
+  }
+  
+ /* ----- Media ----- */
+ figure {}
+ figcaption {}
+ figure img {}
+svg {}
+picture {}
+ source {}
+iframe {}
+video {}
+audio {}
+embed {}
+object {}
+
+/*  ----- Classes for alignment, positioning, widths, grids, embellishments, and animation -----  */
+.gallery {}
+
+.floatright {}
+.floatleft {}
+.center-middle {}
+
+.ten {}
+.twenty {}
+.thirty {}
+.forty {}
+.fifty {}
+.sixty {}
+.seventy {}
+.eighty {}
+
+.radius {}
+.circle {}
+.boxshadow {}
+.tshadow {} 
+.gradient {}
+.shape {}
+
+@keyframes App-logo {}
+
+/*   ===== TABLET  media query overrides mobile styles ===== */
+@media all and (min-width: 600px) {}
+
+/*   ===== DESKTOP  media query overrides mobile and tablet styles ===== */
+@media all and (min-width: 1080px) {}
+
+/*   ===== PRINT  media query overrides previous styles =====  */
+@media print {}

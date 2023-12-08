@@ -1,0 +1,59 @@
+{{!-- // 1 # Citation for the following page:
+// 2 # Date: 11/20/2023
+// 3 # Adapted from code
+// 4 # Much of the format is from the node starter guide. Variables and table values original
+// 5 # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app --}}
+
+<h2>Chef Recipes</h2>
+{{!-- Create a table --}}
+<table id="chefs-recipes-table">
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            <th>Chef Recipe Detail ID</th>
+            <th>Chef</th>
+            <th>Recipe</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row header in order --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.chefs_recipes_details_id}}</td>
+            <td>{{this.first_name}} {{this.last_name}}</td>
+            <td>{{this.recipe_name}}</td>
+            <td><button onclick="deleteChefRecipe({{this.chefs_recipes_details_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_chef_recipe.js"></script>
+
+<h2>Add a Chef Recipe</h2>
+<p>To add a Chefs Recipe, please enter the information below and click 'Submit'!</p>
+<form id="add-chef-recipe-form" method="POST" action="/add-chef-recipe-form">
+
+    <label for="input-chef-id">Chef: </label>
+    <select name="input-chef-id" id="mySelect">
+        <option value="test">Select a Chef</option>
+        {{#each chefs}}
+        <option value="{{this.chef_id}}">{{this.first_name}} {{this.last_name}}</option>
+        {{/each}}
+    </select>
+
+        <label for="input-chef-recipe-id">Recipe: </label>
+    <select name="input-chef-recipe-id" id="mySelect">
+        <option value="test">Select a Recipe</option>
+        {{#each recipes}}
+        <option value="{{this.recipe_id}}">{{this.recipe_name}}</option>
+        {{/each}}
+    </select>
+
+    <input type="submit">
+</form>

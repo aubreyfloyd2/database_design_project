@@ -1,0 +1,114 @@
+{{!-- // 1 # Citation for the following page:
+// 2 # Date: 11/20/2023
+// 3 # Adapted from code
+// 4 # Much of the format is from the node starter guide. Variables and table values original
+// 5 # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app --}}
+
+<h2>Recipes</h2>
+
+{{!-- Create a table --}}
+<table id="recipes-table">
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            <th>Recipe ID</th>
+            <th>Recipe Name</th>
+            <th>Recipe Description</th>
+            <th>Cook Time</th>
+            <th>Food Category</th>
+            <th>Recipe Steps</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the header in order --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.recipe_id}}</td>
+            <td>{{this.recipe_name}}</td>
+            <td>{{this.recipe_description}}</td>
+            <td>{{this.cook_time}}</td>
+            <td>{{this.food_category}}</td>
+            <td>{{this.recipe_steps}}</td>
+            <td><button onclick="deleteRecipe({{this.recipe_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<script src="./js/delete_recipe.js"></script>
+
+<h2>Add a Recipe</h2>
+<p>To add a new recipe, please enter the information below and click 'Submit'!</p>
+<form id="add-recipe-form" method="POST" action="/add-recipe-form">
+
+    <label for="input-recipe-name">Recipe Name: </label>
+    <input type="text" name="input-recipe-name" id="input-recipe-name">
+
+    <label for="input-recipe-description">Recipe Description: </label>
+    <input type="text" name="input-recipe-description" id="input-recipe-description">
+
+    <label for="input-cook-time">Cook Time: </label>
+    <input type="text" name="input-cook-time" id="input-cook-time">
+
+    <label for="input-food-category">Food Category: </label>
+    <input type="text" name="input-food-category" id="input-food-category">
+        <div>
+    <label for="input-recipe-steps">Recipe Steps </label>
+    </div>
+    <textarea
+    name="input-recipe-steps" id="input-recipe-steps"
+    rows="5"   cols="50" 
+    minlength="5"
+    maxlength="250"></textarea>
+
+    <div>
+    <input type="submit">
+    </div>
+</form>
+
+<h2>Update a Recipe</h2>
+<p>To update a specific recipe, select the name from the drop-down menu on the left and update the information.</p>
+<form id="update-recipe-form-ajax">
+
+    <label for="mySelect">Recipe: </label>
+    <select name="input-recipe-update" id="mySelect">
+        <option value="test">Select a Recipe</option>
+        {{#each data}}
+        <option value="{{this.recipe_id}}">{{this.recipe_name}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-recipe-name-update">Recipe Name: </label>
+    <input type="text" name="input-recipe-name-update" id="input-recipe-name-update">
+    
+    <label for="input-recipe-description-update">Recipe Description: </label>
+    <input type="text" name="input-recipe-description-update" id="input-recipe-description-update">
+
+    <label for="input-cook-time-update">Cook Time: </label>
+    <input type="text" name="input-cook-time-update" id="input-cook-time-update">
+
+    <label for="input-food-category-update">Food Category: </label>
+    <input type="text" name="input-food-category-update" id="input-food-category-update">
+        <div>
+    <label for="input-recipe-steps-update">Recipe Steps </label>
+    </div>
+    <textarea
+    name="input-recipe-steps-update" id="input-recipe-steps-update"
+    rows="5"   cols="50" 
+    minlength="5"
+    maxlength="250"></textarea>
+
+    <div>
+    <input type="submit">
+    </div>
+
+</form>
+
+
+<script src="./js/update_recipe.js"></script>

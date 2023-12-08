@@ -1,0 +1,83 @@
+{{!-- // 1 # Citation for the following page:
+// 2 # Date: 11/20/2023
+// 3 # Adapted from code
+// 4 # Much of the format is from the node starter guide. Variables and table values original
+// 5 # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app --}}
+
+<h2>Restaurants</h2>
+
+{{!-- Create a table --}}
+<table id="restaurant-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            <th>Restaurant ID</th>
+            <th>Location</th>
+            <th>Food Type</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the headers in order --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.restaurant_id}}</td>
+            <td>{{this.location}}</td>
+            <td>{{this.food_type}}</td>
+            <td><button onclick="deleteRestaurant({{this.restaurant_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_restaurant.js"></script>
+
+
+{{!-- Form to add a record to the table  --}}
+<h2>Add a Restaurant</h2>
+<p>To add a new restaurant, please enter their information below nad click 'Submit'!</p>
+<form id="add-location-form" method="POST" action="/add-location-form">
+    <label for="input-location">Location Name: </label>
+    <input type="text" name="input-location" id="input-location">
+    
+    <label for="input-food-type">Food Type: </label>
+    <input type="text" name="input-food-type" id="input-food-type">
+
+    <input type="submit">
+</form>
+
+<h2>Search for a Restaurant</h2>
+<p>Search by location using the field below. Start typing the first letters of the Location.</p>
+<form id="search-location-html" method='GET' action='/restaurants'>
+    <label for="input-location">Search by Location: </label>
+    <input type="text" name="location" id="input-location-html-search">
+
+    <input type="submit">
+    <a href='/restaurants'><button>Reset</button></a>
+</form>
+
+<h2>Update a Restaurant</h2>
+<p>To update a specific restaurant, select the name from the drop-down menu and enter the food type.</p>
+<form id="update-restaurant-form-ajax">
+
+    <label for="input-location">Location: </label>
+    <select name="input-location" id="mySelect">
+        <option value="test">Select a Location</option>
+        {{#each data}}
+        <option value="{{this.restaurant_id}}">{{this.location}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-food-type-update">Food Type: </label>
+    <input type="text" name="input-food-type-update" id="input-food-type-update">
+
+    <input type="submit">
+
+</form>
+
+<script src="./js/update_restaurant.js"></script>

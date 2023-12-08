@@ -1,0 +1,98 @@
+{{!-- // 1 # Citation for the following page:
+// 2 # Date: 11/20/2023
+// 3 # Adapted from code
+// 4 # Much of the format is from the node starter guide. Variables and table values original
+// 5 # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app --}}
+
+<h2>Recipe Ingredients</h2>
+{{!-- Create a table --}}
+<table id="recipe-ingredient-table">
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            <th>Recipe Ingredient ID</th>
+            <th>Recipe Name</th>
+            <th>Ingredient Name</th>
+            <th>Quantity</th>
+            <th>Unit of Measurement</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row header in order --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.recipe_ingredient_details_id}}</td>
+            <td>{{this.recipe_name}}</td>
+            <td>{{this.ingredient_name}}</td>
+            <td>{{this.quantity}}</td>
+            <td>{{this.unit_measurement}}</td>
+            <td><button onclick="deleteRecipeIngredient({{this.recipe_ingredient_details_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<script src="./js/delete_recipe_ingredient.js"></script>
+
+
+<h2>Add a Recipe Ingredient</h2>
+<p>To add a Recipe Ingredient, please enter the information below and click 'Submit'!</p>
+<form id="add-recipe-ingredient-form" method="POST" action="/add-recipe-ingredient-form">
+
+    <label for="input-recipe-id">Recipe: </label>
+    <select name="input-recipe-id" id="input-recipe-id">
+        <option value="test">Recipe</option>
+        {{#each recipes}}
+        <option value="{{this.recipe_id}}">{{this.recipe_name}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-ingredient-id">Ingredient: </label>
+    <select name="input-ingredient-id" id="input-ingredient-id">
+        <option value="test">Ingredient</option>
+        {{#each ingredients}}
+        <option value="{{this.ingredient_id}}">{{this.ingredient_name}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-quanity">Quantity: </label>
+    <input type="text" name="input-quantity" id="input-quantity">
+
+    <label for="input-unit-measurement">Unit of Measurement: </label>
+    <input type="text" name="input-unit-measurement" id="input-unit-measurement">
+
+    <input type="submit">
+</form>
+
+<h2>Update a Recipe Ingredient</h2>
+<p>To update a specific recipe ingredient, select the name from the drop-down menu and update the information.</p>
+<form id="update-recipe-ingredient-form-ajax">
+
+    <label for="mySelect">Recipe Ingredient ID: </label>
+    <select name="input-recipe-ingredient-update" id="mySelect">
+        <option value="test">Select a Recipe Ingredient ID</option>
+        {{#each data}}
+        <option value="{{this.recipe_ingredient_details_id}}">{{this.recipe_ingredient_details_id}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-quantity-update">Quantity: </label>
+    <input type="text" name="input-quantity-update" id="input-quantity-update">
+
+    <label for="input-unit-measurement-update">Unit Measurement: </label>
+    <input type="text" name="input-unit-measurement-update" id="input-unit-measurement-update">
+        <div>
+
+    <div>
+    <input type="submit">
+    </div>
+
+</form>
+
+<script src="./js/update_recipe_ingredient.js"></script>
